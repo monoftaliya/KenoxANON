@@ -1,0 +1,82 @@
+{
+  "name": "kenox-anon",
+  "productName": "KenoxANON",
+  "version": "1.12.0",
+  "description": "Анонимность от Kenox: настольное приложение, которое проверяет и укрепляет приватность Windows и стирает цифровые следы",
+  "main": "main/main.js",
+  "author": "Kenox",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "icon": "node scripts/icon.js",
+    "dist": "node scripts/icon.js && electron-builder --win nsis --x64",
+    "postinstall": "node scripts/vendor.js"
+  },
+  "dependencies": {
+    "jszip": "3.10.2"
+  },
+  "devDependencies": {
+    "@fontsource/geologica": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/pixelify-sans": "5.3.0",
+    "electron": "45.2.2",
+    "electron-builder": "26.18.0",
+    "lenis": "1.1.13",
+    "three": "0.160.0"
+  },
+  "build": {
+    "appId": "com.kenox.anon",
+    "productName": "KenoxANON",
+    "copyright": "Kenox",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "executableName": "KenoxANON"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "KenoxANON",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "installerLanguages": [
+        "ru_RU"
+      ],
+      "language": "1049",
+      "artifactName": "KenoxANON-Setup-${version}.${ext}",
+      "deleteAppDataOnUninstall": false
+    },
+    "electronDist": "node_modules/electron/dist",
+    "asar": true,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": true,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true,
+      "grantFileProtocolExtraPrivileges": false
+    }
+  }
+}

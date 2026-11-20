@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KenoxANON</title>
+<link rel="stylesheet" href="vendor/fonts.css">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="js">
+
+<!-- заставка: пока идёт проверка системы -->
+<div class="boot" id="boot">
+  <canvas class="boot__px" id="bootPx" aria-hidden="true"></canvas>
+  <div class="boot__in">
+    <p class="boot__brand"><b>KENOX</b><span>ANON</span></p>
+    <ol class="boot__log" id="bootLog" aria-live="polite"></ol>
+    <div class="boot__bar"><i id="bootBar"></i></div>
+  </div>
+</div>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="spot" id="spot" aria-hidden="true"></div>
+<div class="grain" id="grain" aria-hidden="true"></div>
+
+<header class="tb">
+  <div class="tb__brand">
+    <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="tb__name">KENOX</span><span class="tb__anon">ANON</span>
+  </div>
+  <div class="tb__status" aria-live="polite">
+    <i class="dock__rec" aria-hidden="true"></i><span id="tbSection">Обзор</span>
+    <span class="sep">·</span><span id="tbScore">индекс —</span>
+    <span class="sep">·</span><span id="tbJournal">журнал 0</span><span class="tb__hash" id="tbHash">#——</span>
+  </div>
+</header>
+
+<aside class="side" aria-label="Разделы">
+  <button class="nav-btn" data-view="overview"><b>00</b><span>Обзор</span><i class="cnt" id="cnt-all"></i></button>
+  <button class="nav-btn" data-view="utils"><b>⊞</b><span>Утилиты</span><i class="cnt cnt--utils" id="cnt-utils"></i></button>
+  <p class="nav-group">Слои защиты</p>
+  <button class="nav-btn" data-view="layer-1"><b>01</b><span>Модель угроз</span><i class="cnt" id="cnt-1"></i></button>
+  <button class="nav-btn" data-view="layer-2"><b>02</b><span>Пароли</span><i class="cnt" id="cnt-2"></i></button>
+  <button class="nav-btn" data-view="layer-3"><b>03</b><span>Шифрование</span><i class="cnt" id="cnt-3"></i></button>
+  <button class="nav-btn" data-view="layer-4"><b>04</b><span>Сеть</span><i class="cnt" id="cnt-4"></i></button>
+  <button class="nav-btn" data-view="layer-5"><b>05</b><span>Браузер</span><i class="cnt" id="cnt-5"></i></button>
+  <button class="nav-btn" data-view="layer-6"><b>06</b><span>Связь</span><i class="cnt" id="cnt-6"></i></button>
+  <button class="nav-btn" data-view="layer-7"><b>07</b><span>Устройство</span><i class="cnt" id="cnt-7"></i></button>
+  <button class="nav-btn" data-view="layer-8"><b>08</b><span>Следы</span><i class="cnt" id="cnt-8"></i></button>
+  <button class="nav-btn" data-view="layer-9"><b>09</b><span>Поведение</span><i class="cnt" id="cnt-9"></i></button>
+  <p class="nav-group">Мои данные</p>
+  <button class="nav-btn" data-view="twin"><b>◐</b><span>Двойник</span></button>
+  <button class="nav-btn" data-view="vault"><b>◫</b><span>Хранилище данных</span><i class="cnt" id="cnt-vault"></i></button>
+  <button class="nav-btn" data-view="search"><b>⌕</b><span>Анонимный поиск</span></button>
+  <p class="nav-group">Стирание</p>
+  <button class="nav-btn" data-view="traces"><b>⌫</b><span>Следы в Windows</span></button>
+  <button class="nav-btn" data-view="shredder"><b>▒</b><span>Шредер файлов</span></button>
+  <button class="nav-btn" data-view="footprint"><b>◌</b><span>След в интернете</span></button>
+  <p class="nav-group">Инструменты</p>
+  <button class="nav-btn" data-view="guard"><b>◈</b><span>Страж</span><i class="cnt" id="cnt-guard"></i></button>
+  <button class="nav-btn" data-view="radar"><b>◎</b><span>Радар соединений</span></button>
+  <button class="nav-btn" data-view="spy"><b>◉</b><span>Кто подглядывал</span><i class="cnt" id="cnt-spy"></i></button>
+  <button class="nav-btn" data-view="meta"><b>▣</b><span>Метаданные</span></button>
+  <button class="nav-btn" data-view="leaks"><b>⚿</b><span>Утечки паролей</span></button>
+  <button class="nav-btn" data-view="browsers"><b>▤</b><span>Браузеры</span></button>
+  <button class="nav-btn" data-view="air"><b>≋</b><span>Эфир Wi‑Fi</span></button>
+  <button class="nav-btn" data-view="panic"><b>!</b><span>Тревожная кнопка</span></button>
+  <p class="nav-group">Знания</p>
+  <button class="nav-btn" data-view="atlas"><b>32</b><span>Атлас слежки</span></button>
+  <button class="nav-btn" data-view="journal"><b>#</b><span>Журнал</span></button>
+  <p class="side__by">Сделал <b>Kenox</b> · v1.12<br>всё работает на этом компьютере</p>
+</aside>
+
+<main class="view" id="view"><div class="view__in" id="viewIn"></div></main>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal__panel plate" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <p class="kicker"><span id="modalKicker">Что изменится</span></p>
+    <h2 class="modal__title" id="modalTitle"></h2>
+    <div class="modal__body" id="modalBody"></div>
+    <div class="modal__keys"><button class="key key--snow" id="modalOk" type="button">Применить</button><button class="key" id="modalCancel" type="button">Отмена</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="atlas-data.js"></script>
+<script src="content.js"></script>
+<script src="erase-data.js"></script>
+<script src="ui.js"></script>
+<script src="views.js"></script>
+<script src="tools.js"></script>
+<script src="erase.js"></script>
+<script src="atlas-actions.js"></script>
+<script src="vault.js"></script>
+<script src="guard.js"></script>
+<script src="twin.js"></script>
+<script src="search.js"></script>
+<script src="viewer.js"></script>
+<script src="utils-data.js"></script>
+<script src="utils.js"></script>
+<script src="checkall.js"></script>
+<script src="app.js"></script>
+<script type="module" src="scene.js"></script>
+</body>
+</html>

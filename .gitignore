@@ -1,0 +1,13 @@
+# зависимости и сборки — ставятся и собираются заново (npm install, npm run dist)
+node_modules/
+release/
+dist/
+# шрифты и библиотеки кладёт scripts/vendor.js после npm install
+renderer/vendor/
+# данные тестов и временные файлы
+.kxtest/
+*.kx-*
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini

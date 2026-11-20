@@ -5,7 +5,10 @@
   "description": "Анонимность от Kenox: настольное приложение, которое проверяет и укрепляет приватность Windows и стирает цифровые следы",
   "main": "main/main.js",
   "author": "Kenox",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/Kenox/KenoxANON",
+  "repository": { "type": "git", "url": "https://github.com/Kenox/KenoxANON.git" },
+  "bugs": { "url": "https://github.com/Kenox/KenoxANON/issues" },
   "private": true,
   "scripts": {
     "start": "electron .",

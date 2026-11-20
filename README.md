@@ -43,7 +43,7 @@
 Нужен [Node.js](https://nodejs.org) 20 или новее:
 
 ```bash
-git clone https://github.com/Kenox/KenoxANON.git
+git clone https://github.com/monoftaliya/KenoxANON.git
 cd KenoxANON
 npm install
 npm start

@@ -6,9 +6,9 @@
   "main": "main/main.js",
   "author": "Kenox",
   "license": "GPL-3.0-only",
-  "homepage": "https://github.com/Kenox/KenoxANON",
-  "repository": { "type": "git", "url": "https://github.com/Kenox/KenoxANON.git" },
-  "bugs": { "url": "https://github.com/Kenox/KenoxANON/issues" },
+  "homepage": "https://github.com/monoftaliya/KenoxANON",
+  "repository": { "type": "git", "url": "https://github.com/monoftaliya/KenoxANON.git" },
+  "bugs": { "url": "https://github.com/monoftaliya/KenoxANON/issues" },
   "private": true,
   "scripts": {
     "start": "electron .",
